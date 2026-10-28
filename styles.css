@@ -14,7 +14,7 @@
 }
 
 .analytics-dashboard__container {
-    padding-top: 1.5rem;
+    padding-top: 0;
     padding-bottom: 2rem;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .analytics-dashboard__hero::after {
-    background: rgba(8, 28, 18, 0.66);
+    background: linear-gradient(90deg, rgba(5, 20, 13, 0.82), rgba(5, 20, 13, 0.58) 70%);
     pointer-events: none;
 }
 
@@ -83,6 +83,7 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.15;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .analytics-dashboard__hero p:last-child {
@@ -91,6 +92,7 @@
     color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
     line-height: 1.5;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .analytics-dashboard__eyebrow {
@@ -103,6 +105,9 @@
 }
 
 .analytics-dashboard__section {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
     margin: 0 0 1.5rem;
     padding: 1.25rem;
     border: 1px solid var(--analytics-dashboard-border);
@@ -182,26 +187,44 @@
 }
 
 .analytics-dashboard__table-wrap {
+    width: 100%;
     max-width: 100%;
     overflow-x: auto;
+    overscroll-behavior-inline: contain;
     border: 1px solid var(--analytics-dashboard-border);
     border-radius: 0.4rem;
 }
 
 .analytics-dashboard__tabs {
+    min-width: 0;
     margin-bottom: 1rem;
 }
 
 .analytics-dashboard__tab-content {
     min-width: 0;
+    max-width: 100%;
 }
 
 .analytics-dashboard__payment-filters {
     display: grid;
-    grid-template-columns: minmax(12rem, 2fr) repeat(3, minmax(9rem, 1fr)) auto auto;
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1.25fr))
+        minmax(4.5rem, 0.65fr) auto auto;
     align-items: end;
     gap: 0.75rem;
+    width: 100%;
+    max-width: 100%;
     margin-bottom: 1rem;
+}
+
+.analytics-dashboard__payment-filters > * {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.analytics-dashboard__payment-filters .form-control,
+.analytics-dashboard__payment-filters .form-select {
+    width: 100%;
 }
 
 .analytics-dashboard__payment-filters .btn {
@@ -228,6 +251,7 @@
 
 .analytics-dashboard__table-container {
     min-width: 0;
+    max-width: 100%;
 }
 
 .analytics-dashboard__table-tools {
@@ -405,7 +429,7 @@
 
 @media (max-width: 767.98px) {
     .analytics-dashboard__container {
-        padding-top: 1rem;
+        padding-top: 0;
         padding-bottom: 1.5rem;
     }
 
@@ -449,5 +473,15 @@
     .analytics-dashboard__table thead th,
     .analytics-dashboard__table tbody td {
         padding: 0.65rem 0.75rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .analytics-dashboard__payment-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .analytics-dashboard__payment-filters > :first-child {
+        grid-column: 1 / -1;
     }
 }
